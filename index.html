@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- animate.css cdn -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <link rel="stylesheet" href="style.css" />
+        <!-- bootstrap css cdn -->
+        <!-- bootstrap css cdn -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+        <title>Javascript Strong Password Check</title>
+    </head>
+
+    <body class="container-fluid spectrum-background mt-1">
+        <div >
+            <h1 class="animate__animated animate__bounce animate__delay-1s">Wel-Come</h1>
+
+            
+        </div>
+        <div class="row">
+            <div class="col-md-12"><img src="1900851.png" style="width: 400px;height: 100%;box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 2);" />
+                <h2 class="headtext animate__animated animate__bounce animate__delay-1s">Password Validation</h2>
+            </div>
+            <div class="col-md-12 shadow-lg w-75 mt-5">
+                <div class="row p-3">
+                    <div class="col-md-12  mt-3">
+                        <input type="text" class="form-control pl-5" id="userid" name="userid" placeholder="Email Id"
+                            oninput="useridfield(this)" />
+                    </div>
+                    <div class="col-md-12 mt-3 ">
+                        <input type="password" id="password" class="form-control pl-5" name="password"
+                            placeholder="Password" oninput="passwordField(this)" onblur="passwordField(this)" />
+                    </div>
+                    <div class="col-md-12 mt-3">
+                        <button class="btn rounded-0 w-25" style="background-color:#000202;color:aliceblue;font-size: 18px;">Login</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div id="message"></div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12" ><h4 style="font-size: 14px;" clas><span class="text-dark">Created by</span> <span class="text-end text-danger">@Tejas_Javalkar</span></h4>
+            
+            </div>
+        </div>
+
+        </div>
+
+
+
+
+        <!-- js file -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            function loading(){
+                document.getElementById("username").focus;
+            }
+            function passwordField(input) {
+                var inputlength=input.length;
+                const strongRegex = new RegExp(
+                    "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{4,})(?=.{8,})"
+                );
+                if (!strongRegex.test(input.value) || input.length < 1) {
+                    //red border
+                    input.style.borderColor = "#dc3545";
+
+                    document.getElementById("message").innerHTML = "Password shouled be 8 digit length with 2 uppercase,2 lowercase and digit between 0-9 and !@#$%^&* special symbol";
+                    document.getElementById("message").className = "text-danger bg-light"
+                    document.getElementById("message").style.fontSize = "20px"
+                }
+                else {
+                    input.style.borderColor = "#2ecc71";
+                    document.getElementById("message").innerHTML = "Strong Password";
+                    document.getElementById("message").className = "text-success"
+                    document.getElementById("message").style.fontSize = "20px"
+                }
+            }
+
+            function useridfield(input) {
+                var pattern = new RegExp(
+                    /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
+                );
+                if (!pattern.test(input.value)) {
+                    //red border
+                    input.style.borderColor = "#e74c3c";
+                }
+                else {
+
+                    input.style.borderColor = "#2ecc71";
+                }
+            }
+        </script>
+    </body>
+
+</html>
